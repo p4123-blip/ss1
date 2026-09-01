@@ -4,7 +4,9 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { locations } from '@/config/site';
 
-const TURNSTILE_SITE_KEY = '0x4AAAAAAEkAYh4NfObPr1cb';
+const TURNSTILE_SITE_KEY = '3x00000000000000000000FF';
+
+// 0x4AAAAAAEkAYh4NfObPr1cb
 
 export default function Contact() {
   const [form, setForm] = useState({
