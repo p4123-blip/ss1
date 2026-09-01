@@ -59,8 +59,7 @@ export default function Contact() {
       const { data, error } = await supabase
         .from('contact_submissions')
         .insert(payload)
-        .select(); // Adding .select() returns the inserted row
-
+        
       if (error) {
         console.error('❌ Supabase insert error:', error.message, error.details, error.hint);
         throw error;
