@@ -44,6 +44,7 @@ export default function Book() {
                   style={{ border: 0 }}
                   title="Schedule an appointment at SkyView Eye Centre"
                   loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                 />
               </div>
             </div>
