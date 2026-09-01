@@ -9,7 +9,7 @@ interface HomeProps {
 
 // ── Replace this with your own video file URL ──
 const HERO_VIDEO_URL = '';
-const HERO_POSTER = 'https://images.pexels.com/photos/5752282/pexels-photo-5752282.jpeg?auto=compress&cs=tinysrgb&w=1920';
+const HERO_POSTER = 'https://images.pexels.com/photos/39192334/pexels-photo-39192334.jpeg?auto=compress&cs=tinysrgb&w=1920';
 
 function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -63,10 +63,10 @@ function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
         <div className="mx-auto max-w-3xl text-center">
           <span className="badge bg-white/10 text-primary-200 ring-1 ring-white/20 animate-fade-in-up">
             <Award className="h-3.5 w-3.5" />
-            Trusted Eye Care Since 2001
+            Trusted Eye Care Since 2006
           </span>
           <h1 className="mt-6 text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl text-balance animate-fade-in-up">
-            See Life Clearly at{' '}
+            
             <span className="bg-gradient-to-r from-primary-300 to-secondary-300 bg-clip-text text-transparent">
               SkyView Eye Centre
             </span>
@@ -93,7 +93,7 @@ function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
                 <Star key={i} className="h-4 w-4 fill-accent-400 text-accent-400" />
               ))}
             </div>
-            <span>Rated 5.0 on Google</span>
+            <span>Rated 4.5 on Google</span>
           </div>
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 />
               </div>
               <div className="absolute -right-4 top-8 hidden rounded-xl bg-primary-600 p-5 text-white shadow-xl md:block">
-                <p className="text-3xl font-bold">25+</p>
+                <p className="text-3xl font-bold">20+</p>
                 <p className="text-sm text-primary-100">Years of Excellence</p>
               </div>
             </div>
@@ -195,15 +195,15 @@ export default function Home({ onNavigate }: HomeProps) {
                 {[
                   {
                     title: 'World-Class Specialists',
-                    desc: 'Our team of 12 ophthalmologists and optometrists are fellowship-trained and internationally recognised.',
+                    desc: 'Our team of 4 ophthalmologists are fellowship-trained and internationally recognised.',
                   },
                   {
-                    title: 'Advanced Technology',
-                    desc: 'From femtosecond lasers to OCT angiography, we invest in the latest diagnostic and surgical equipment.',
+                    title: 'Advanced Diagnostic Care',
+                    desc: 'From high-definition OCT imaging to precision medical lasers, we invest in advanced equipment for accurate treatment.',
                   },
                   {
                     title: 'Two Convenient Locations',
-                    desc: 'With clinics in Singapore and Johor Bahru, quality eye care is always within reach.',
+                    desc: 'Serving Tun Aminah from Harimau Tarum to Tun Aminah, quality eye care is always close by.',
                   },
                   {
                     title: 'Patient-First Approach',
@@ -334,7 +334,7 @@ export default function Home({ onNavigate }: HomeProps) {
           <SectionHeader
             eyebrow="Our Locations"
             title="Two Clinics, One Standard of Excellence"
-            description="Visit us in Singapore or Johor Bahru for world-class eye care delivered with a personal touch."
+            description="Visit us in Harimau Tarum or Tun Aminah for world-class eye care delivered with a personal touch."
           />
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             {locations.map((location) => (

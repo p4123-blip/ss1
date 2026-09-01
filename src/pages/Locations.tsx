@@ -15,7 +15,7 @@ export default function Locations({ onNavigate }: LocationsProps) {
             Our Locations
           </span>
           <h1 className="mt-4 text-4xl font-bold text-white md:text-5xl text-balance">
-            Visit Us in Singapore or Johor Bahru
+            Visit Us in Harimau Tarum or Tun Aminah
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-primary-100">
             Two modern clinics, one standard of excellence. Find the location nearest

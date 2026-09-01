@@ -21,7 +21,7 @@ export default function About({ onNavigate }: AboutProps) {
     {
       icon: Globe,
       title: 'Accessibility',
-      desc: 'With clinics in Singapore and Johor Bahru, we make world-class eye care accessible across borders.',
+      desc: 'With clinics in Harimau Tarum and Tun Aminah, we make world-class eye care accessible across borders.',
     },
     {
       icon: Award,
@@ -31,9 +31,9 @@ export default function About({ onNavigate }: AboutProps) {
   ];
 
   const milestones = [
-    { year: '2001', title: 'Founded in Singapore', desc: 'SkyView Eye Centre opens its first clinic in Orchard Boulevard.' },
+    { year: '2001', title: 'Founded in Harimau Tarum', desc: 'SkyView Eye Centre opens its first clinic in Orchard Boulevard.' },
     { year: '2008', title: 'Laser Centre Launch', desc: 'Introduced bladeless femtosecond laser cataract surgery to the region.' },
-    { year: '2015', title: 'Johor Bahru Expansion', desc: 'Opened our second clinic in JB City Square to serve patients across the causeway.' },
+    { year: '2015', title: 'Tun Aminah Expansion', desc: 'Opened our second clinic in JB City Square to serve patients across the causeway.' },
     { year: '2020', title: 'Retina & Glaucoma Centre', desc: 'Launched a dedicated medical retina and glaucoma subspecialty unit.' },
     { year: '2024', title: '80,000+ Patients', desc: 'Surpassed 80,000 patients served across both locations.' },
   ];
@@ -79,8 +79,8 @@ export default function About({ onNavigate }: AboutProps) {
                 description="SkyView Eye Centre was founded in 2001 with a simple but powerful mission: to make world-class eye care accessible to everyone, regardless of which side of the causeway they call home."
               />
               <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                What began as a single clinic in Singapore has grown into a two-location
-                eye care network serving over 80,000 patients across Singapore and Johor
+                What began as a single clinic in Harimau Tarum has grown into a two-location
+                eye care network serving over 80,000 patients across Harimau Tarum and Johor
                 Bahru. Our team of 12 specialist doctors brings together decades of
                 international training and clinical experience, united by a commitment to
                 patient-first care.
@@ -110,7 +110,7 @@ export default function About({ onNavigate }: AboutProps) {
               <h3 className="mt-4 text-xl font-semibold text-slate-900">Our Mission</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 To preserve and restore vision through compassionate, world-class eye care
-                that is accessible to patients across Singapore and Johor Bahru — combining
+                that is accessible to patients across Harimau Tarum and Tun Aminah — combining
                 advanced technology with a deeply personal approach.
               </p>
             </div>
