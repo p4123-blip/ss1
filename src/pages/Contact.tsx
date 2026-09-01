@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle, MessageCircle } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { locations } from '@/config/site';
 
 export default function Contact() {
@@ -37,6 +37,11 @@ export default function Contact() {
 
     setErrors({});
     setStatus('submitting');
+
+    if (!isSupabaseConfigured) {
+      setStatus('error');
+      return;
+    }
 
     try {
       const { error } = await supabase.from('contact_submissions').insert({
