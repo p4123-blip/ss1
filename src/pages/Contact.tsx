@@ -39,6 +39,56 @@ export default function Contact() {
     setStatus('submitting');
 
     if (!isSupabaseConfigured) {
+      console.error('❌ Supabase is not configured! Check your .env file.');
+      setStatus('error');
+      return;
+    }
+
+    try {
+      const payload = {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || null,
+        subject: form.subject.trim() || null,
+        message: form.message.trim(),
+        location: form.location || null,
+      };
+
+      console.log('Sending payload to Supabase:', payload);
+
+      const { data, error } = await supabase
+        .from('contact_submissions')
+        .insert(payload)
+        .select(); // Adding .select() returns the inserted row
+
+      if (error) {
+        console.error('❌ Supabase insert error:', error.message, error.details, error.hint);
+        throw error;
+      }
+
+      console.log('✅ Successfully inserted row:', data);
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '', subject: '', message: '', location: '' });
+    } catch (err) {
+      console.error('❌ Full catch error:', err);
+      setStatus('error');
+    }
+  };
+  
+  /*
+   
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setStatus('submitting');
+
+    if (!isSupabaseConfigured) {
       setStatus('error');
       return;
     }
@@ -61,6 +111,7 @@ export default function Contact() {
       setStatus('error');
     }
   };
+  */
 
   const updateField = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
