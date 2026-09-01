@@ -72,7 +72,7 @@ export const clinic = {
     instagram: 'https://instagram.com',
     youtube: 'https://youtube.com',
   },
-  platoEmbedUrl: 'https://plato.so/embed/YOUR_EMBED_LINK_HERE',
+  platoEmbedUrl: 'https://clinic.platomedical.com/book/ZHJnYW5lc2g=/1ce462e2232c40619f459ca02896a02a',
   stats: [
     { value: '25+', label: 'Years of Excellence' },
     { value: '80,000+', label: 'Patients Served' },
