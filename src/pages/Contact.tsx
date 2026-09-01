@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle, MessageCircle } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { locations } from '@/config/site';
+
+const TURNSTILE_SITE_KEY = '0x4AAAAAAEkAYh4NfObPr1cb';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -12,6 +15,7 @@ export default function Contact() {
     message: '',
     location: '',
   });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -29,6 +33,13 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Guard: Prevent submission if Turnstile hasn't validated
+    if (!turnstileToken) {
+      setErrors((prev) => ({ ...prev, turnstile: 'Please complete the security check.' }));
+      return;
+    }
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -68,6 +79,7 @@ export default function Contact() {
       console.log('✅ Successfully inserted row:', data);
       setStatus('success');
       setForm({ name: '', email: '', phone: '', subject: '', message: '', location: '' });
+      setTurnstileToken(null);
     } catch (err) {
       console.error('❌ Full catch error:', err);
       setStatus('error');
@@ -249,7 +261,7 @@ export default function Contact() {
                           value={form.phone}
                           onChange={(e) => updateField('phone', e.target.value)}
                           className="input-field"
-                          placeholder="+65 9123 4567"
+                          placeholder="+6012 123 4567"
                         />
                       </div>
                       <div>
@@ -300,9 +312,31 @@ export default function Contact() {
                       )}
                     </div>
 
+                    {/* Cloudflare Turnstile Widget */}
+                    <div className="py-1">
+                      <Turnstile
+                        siteKey={TURNSTILE_SITE_KEY}
+                        onSuccess={(token) => {
+                          setTurnstileToken(token);
+                          if (errors.turnstile) {
+                            setErrors((prev) => {
+                              const next = { ...prev };
+                              delete next.turnstile;
+                              return next;
+                            });
+                          }
+                        }}
+                        onExpire={() => setTurnstileToken(null)}
+                        onError={() => setTurnstileToken(null)}
+                      />
+                      {errors.turnstile && (
+                        <p className="mt-1 text-xs text-error-600">{errors.turnstile}</p>
+                      )}
+                    </div>
+
                     <button
                       type="submit"
-                      disabled={status === 'submitting'}
+                      disabled={status === 'submitting' || !turnstileToken}
                       className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       {status === 'submitting' ? (
