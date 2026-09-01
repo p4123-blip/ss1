@@ -4,7 +4,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { locations } from '@/config/site';
 
-const TURNSTILE_SITE_KEY = '3x00000000000000000000FF';
+const TURNSTILE_SITE_KEY = '2x00000000000000000000AB';
 
 // 0x4AAAAAAEkAYh4NfObPr1cb
 
