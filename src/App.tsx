@@ -73,7 +73,7 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col" style={{ backgroundColor: '#FDFBF7' }}>
       <ScrollToTop path={path} />
       <Navbar currentPath={path} onNavigate={navigate} />
       <main className="flex-1">{renderPage()}</main>
