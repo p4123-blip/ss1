@@ -10,13 +10,13 @@
   }
   body {
     @apply font-sans text-slate-900 antialiased;
-    background-color: #FDFBF7;
+    background-color: #F8FAFC;
     font-size: 16px;
     line-height: 1.6;
-    --tw-ring-offset-color: #FDFBF7;
+    --tw-ring-offset-color: #F8FAFC;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-ink-900;
+    @apply font-display text-primary-900;
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
@@ -39,19 +39,19 @@
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
   .btn-primary {
-    @apply btn bg-ink-800 text-white shadow-lg shadow-ink-900/25 hover:bg-ink-900 hover:shadow-xl hover:shadow-ink-900/30 focus:ring-ink-700;
+    @apply btn bg-primary-800 text-white shadow-lg shadow-primary-900/20 hover:bg-primary-900 hover:shadow-xl hover:shadow-primary-900/25 focus:ring-primary-600;
   }
   .btn-secondary {
-    @apply btn bg-white text-ink-800 ring-1 ring-inset ring-primary-200 hover:bg-primary-50 hover:ring-primary-300 focus:ring-primary-500;
+    @apply btn bg-white text-primary-800 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:ring-slate-300 focus:ring-primary-500;
   }
   .btn-accent {
-    @apply btn bg-accent-500 text-ink-900 shadow-lg shadow-accent-500/25 hover:bg-accent-400 focus:ring-accent-500;
+    @apply btn bg-accent-500 text-white shadow-lg shadow-accent-500/20 hover:bg-accent-600 focus:ring-accent-500;
   }
   .btn-ghost {
     @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:ring-slate-300;
   }
   .card {
-    @apply rounded-2xl bg-white shadow-md ring-1 ring-ink-900/10 transition-all duration-300;
+    @apply rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all duration-300;
   }
   .card-hover {
     @apply card hover:shadow-2xl hover:-translate-y-1.5;
@@ -69,8 +69,8 @@
     text-wrap: balance;
   }
   .bg-grid {
-    background-image: linear-gradient(to right, rgba(53, 42, 33, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(53, 42, 33, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 }
