@@ -297,7 +297,7 @@ export const locations: Location[] = [
   {
     slug: 'Harimau-Tarum',
     name: 'SkyView Eye Centre — Harimau Tarum',
-    city: 'Johor Bahru',
+    city: 'Taman Abad, Johor Bahru',
     country: 'Malaysia',
     address: 'No. 100, Jalan Harimau Tarum, Taman Abad, 80250 Johor Bahru, Johor, Malaysia',
     phone: '+65 6123 4567',
@@ -318,7 +318,7 @@ export const locations: Location[] = [
   {
     slug: 'johor-bahru',
     name: 'SkyView Eye Centre — Tun Aminah',
-    city: 'Johor Bahru',
+    city: 'Taman Ungku Tun Aminah, Johor Bahru',
     country: 'Malaysia',
     address: 'No. 87, Jalan Bentara 1, Taman Ungku Tun Aminah, 81300 Skudai, Johor, Malaysia',
     phone: '+60 7 123 4567',
