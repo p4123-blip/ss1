@@ -13,7 +13,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5">
               <img
-                src="public\Logo transparent.jpeg"
+                src="Logo transparent.jpeg"
                 alt="SkyView Eye Centre logo"
                 className="h-10 w-10 rounded-xl"
               />
