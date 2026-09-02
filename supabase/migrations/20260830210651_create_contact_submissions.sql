@@ -9,7 +9,11 @@
   - `phone` (text, nullable) — optional phone number
   - `subject` (text, nullable) — optional subject line
   - `message` (text, not null) — the message body
+<<<<<<< HEAD
   - `location` (text, nullable) — which clinic they're contacting (Harimau Tarum / Tun Aminah)
+=======
+  - `location` (text, nullable) — which clinic they're contacting (Singapore / Johor Bahru)
+>>>>>>> 7d8de01a527e7d2c3d8ff76d481baf478d3b81f9
   - `status` (text, default 'new') — for clinic staff to track (new, read, responded)
   - `created_at` (timestamptz, default now())
 
