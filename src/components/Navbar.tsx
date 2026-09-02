@@ -52,7 +52,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           className="flex items-center gap-2.5 transition-transform hover:scale-105"
         >
           <img
-            src="/logo-mark.png"
+            src="public\Logo transparent.jpeg"
             alt="SkyView Eye Centre logo"
             className="h-10 w-10 rounded-xl shadow-lg shadow-primary-600/20"
           />
