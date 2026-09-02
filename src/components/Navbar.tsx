@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Eye, Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
 import { navLinks } from '@/config/site';
 
 interface NavbarProps {
@@ -51,9 +51,11 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           onClick={() => handleNavClick('/')}
           className="flex items-center gap-2.5 transition-transform hover:scale-105"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-600/20">
-            <Eye className="h-5 w-5 text-white" strokeWidth={2.5} />
-          </div>
+          <img
+            src="/logo-mark.png"
+            alt="SkyView Eye Centre logo"
+            className="h-10 w-10 rounded-xl shadow-lg shadow-primary-600/20"
+          />
           <div className="text-left">
             <span className="block font-display text-lg font-bold leading-tight text-slate-900">
               SkyView

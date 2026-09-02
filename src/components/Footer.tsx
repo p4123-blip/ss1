@@ -1,4 +1,4 @@
-import { Eye, Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Calendar } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Calendar } from 'lucide-react';
 import { clinic, locations, navLinks } from '@/config/site';
 
 interface FooterProps {
@@ -12,9 +12,11 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-700">
-                <Eye className="h-5 w-5 text-white" strokeWidth={2.5} />
-              </div>
+              <img
+                src="/logo-mark-light.png"
+                alt="SkyView Eye Centre logo"
+                className="h-10 w-10 rounded-xl"
+              />
               <div>
                 <span className="block font-display text-lg font-bold leading-tight text-white">
                   SkyView
