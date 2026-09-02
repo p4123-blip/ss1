@@ -10,10 +10,10 @@
   }
   body {
     @apply font-sans text-slate-900 antialiased;
-    background-color: #FDFBF7;
+    background-color: #F8FAFC;
     font-size: 16px;
     line-height: 1.6;
-    --tw-ring-offset-color: #FDFBF7;
+    --tw-ring-offset-color: #F8FAFC;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-slate-900;
@@ -62,8 +62,8 @@
     text-wrap: balance;
   }
   .bg-grid {
-    background-image: linear-gradient(to right, rgba(140, 123, 101, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(140, 123, 101, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(100, 116, 139, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 }
