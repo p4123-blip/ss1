@@ -5,7 +5,7 @@ import {
   ShieldCheck,
   Droplets,
   Baby,
-  Contact,
+  AlertCircle,
   Glasses,
   type LucideIcon,
 } from 'lucide-react';
