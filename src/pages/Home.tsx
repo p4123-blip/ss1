@@ -56,7 +56,7 @@ function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
       )}
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-950/70 via-primary-950/50 to-primary-950/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink-950/55 via-ink-950/25 to-ink-950/70" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
