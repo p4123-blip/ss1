@@ -51,7 +51,7 @@
     @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:ring-slate-300;
   }
   .card {
-    @apply rounded-2xl bg-white shadow-md ring-1 ring-ink-900/5 transition-all duration-300;
+    @apply rounded-2xl bg-white shadow-md ring-1 ring-ink-900/10 transition-all duration-300;
   }
   .card-hover {
     @apply card hover:shadow-2xl hover:-translate-y-1.5;

@@ -65,11 +65,8 @@ function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
             <Award className="h-3.5 w-3.5" />
             Trusted Eye Care Since 2006
           </span>
-          <h1 className="mt-6 text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl text-balance animate-fade-in-up">
-            
-            <span className="bg-gradient-to-r from-primary-300 to-secondary-300 bg-clip-text text-transparent">
-              SkyView Eye Centre
-            </span>
+          <h1 className="mt-6 text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl text-balance animate-fade-in-up drop-shadow-[0_2px_12px_rgba(26,20,15,0.45)]">
+            SkyView <span className="text-accent-300">Eye Centre</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-primary-100 md:text-xl animate-fade-in-up [animation-delay:100ms]">
             {clinic.description}
@@ -121,8 +118,8 @@ export default function Home({ onNavigate }: HomeProps) {
               const Icon = icons[i];
               return (
                 <div key={stat.label} className="text-center">
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
-                    <Icon className="h-6 w-6 text-primary-600" />
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-ink-800 shadow-md shadow-ink-900/20">
+                <Icon className="h-6 w-6 text-accent-300" />
                   </div>
                   <p className="text-3xl font-bold text-slate-900">{stat.value}</p>
                   <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
@@ -148,8 +145,8 @@ export default function Home({ onNavigate }: HomeProps) {
                 onClick={() => onNavigate(`/services/${service.slug}`)}
                 className="card-hover group flex flex-col p-6 text-left"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-600">
-                  <service.icon className="h-7 w-7 text-primary-600 transition-colors group-hover:text-white" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-ink-800 shadow-md shadow-ink-900/20 transition-colors group-hover:bg-accent-500">
+                <service.icon className="h-7 w-7 text-accent-300 transition-colors group-hover:text-ink-900" />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
                   {service.title}
@@ -157,8 +154,8 @@ export default function Home({ onNavigate }: HomeProps) {
                 <p className="mt-2 text-sm leading-relaxed text-slate-500">
                   {service.shortDescription}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-600">
-                  Learn more
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent-700">
+                Learn more
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </span>
               </button>
