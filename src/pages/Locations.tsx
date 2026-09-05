@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail, Clock, Calendar, Star } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
-import { locations } from '@/config/site';
+import { activeLocations } from '@/config/site';
 
 interface LocationsProps {
   onNavigate: (path: string) => void;
@@ -15,11 +15,10 @@ export default function Locations({ onNavigate }: LocationsProps) {
             Our Locations
           </span>
           <h1 className="mt-4 text-4xl font-bold text-white md:text-5xl text-balance">
-            Visit Us in Harimau Tarum or Tun Aminah
+Visit Us in Harimau Tarum
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-primary-100">
-            Two modern clinics, one standard of excellence. Find the location nearest
-            to you and book your visit today.
+Modern, welcoming, and equipped with the latest technology. Book your visit today.
           </p>
         </div>
       </section>
@@ -27,7 +26,7 @@ export default function Locations({ onNavigate }: LocationsProps) {
       <section className="section-padding bg-slate-50">
         <div className="container-page">
           <div className="grid gap-8 lg:grid-cols-2">
-            {locations.map((location) => (
+            {activeLocations.map((location) => (
               <div key={location.slug} className="card-hover overflow-hidden">
                 <div className="relative h-56 overflow-hidden">
                   <img

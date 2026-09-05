@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle, MessageCircle } from 'lucide-react';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
-import { locations } from '@/config/site';
+import { activeLocations } from '@/config/site';
 
 const TURNSTILE_SITE_KEY = '0x4AAAAAAEkAYh4NfObPr1cb';
 
@@ -156,7 +156,7 @@ export default function Contact() {
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="lg:col-span-1">
               <div className="space-y-4">
-                {locations.map((loc) => (
+                {activeLocations.map((loc) => (
                   <div key={loc.slug} className="card p-5">
                     <h3 className="font-semibold text-slate-900">{loc.city} Clinic</h3>
                     <div className="mt-3 space-y-2">
@@ -274,7 +274,7 @@ export default function Contact() {
                           className="input-field"
                         >
                           <option value="">Select a clinic</option>
-                          {locations.map((loc) => (
+                          {activeLocations.map((loc) => (
                             <option key={loc.slug} value={loc.slug}>
                               {loc.city}
                             </option>

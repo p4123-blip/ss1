@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, Calendar, ArrowRight, MapPin, Phone, CheckCircle2, Quote, Award, Users, Building2, Stethoscope, ChevronDown } from 'lucide-react';
+import { Star, Calendar, ArrowRight, MapPin, Phone, CheckCircle2, Quote, Award, Users, Building2, Stethoscope, ChevronDown, Eye, BookOpen, Loader2 } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
-import { clinic, services, doctors, locations, testimonials } from '@/config/site';
+import { clinic, services, doctors, activeLocations, testimonials } from '@/config/site';
+import { supabase } from '@/lib/supabase';
 
 interface HomeProps {
   onNavigate: (path: string) => void;
@@ -103,6 +104,142 @@ function VideoHero({ onNavigate }: { onNavigate: (path: string) => void }) {
   );
 }
 
+interface HomePreviewData {
+  conditions: { slug: string; title: string; summary: string; category: string; image_url: string | null }[];
+  topics: { slug: string; title: string; excerpt: string; category: string | null; image_url: string | null; author: string | null; published_at: string }[];
+}
+
+function HomePreviews({ onNavigate }: { onNavigate: (path: string) => void }) {
+  const [data, setData] = useState<HomePreviewData>({ conditions: [], topics: [] });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [condRes, topicRes] = await Promise.all([
+          supabase.from('eye_conditions').select('slug,title,summary,category,image_url').order('sort_order', { ascending: true }).limit(3),
+          supabase.from('eye_topics').select('slug,title,excerpt,category,image_url,author,published_at').order('published_at', { ascending: false }).limit(3),
+        ]);
+        setData({
+          conditions: (condRes.data || []) as HomePreviewData['conditions'],
+          topics: (topicRes.data || []) as HomePreviewData['topics'],
+        });
+      } catch {
+        // silently skip previews if fetch fails
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString('en-MY', { month: 'short', day: 'numeric', year: 'numeric' });
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-12">
+        <Loader2 className="h-6 w-6 animate-spin text-primary-400" />
+      </div>
+    );
+  }
+
+  const hasConditions = data.conditions.length > 0;
+  const hasTopics = data.topics.length > 0;
+
+  if (!hasConditions && !hasTopics) return null;
+
+  return (
+    <>
+      {hasConditions && (
+        <section className="section-padding bg-white">
+          <div className="container-page">
+            <SectionHeader
+              eyebrow="Eye Conditions"
+              title="Understand Your Symptoms"
+              description="Browse our guides on common eye conditions — symptoms, home care, and when to seek help."
+            />
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {data.conditions.map((cond) => (
+                <button
+                  key={cond.slug}
+                  onClick={() => onNavigate(`/eye-conditions/${cond.slug}`)}
+                  className="card-hover group flex flex-col overflow-hidden text-left"
+                >
+                  {cond.image_url && (
+                    <div className="relative h-40 overflow-hidden">
+                      <img src={cond.image_url} alt={cond.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <span className="absolute bottom-2 left-2 badge bg-white/90 text-slate-800">{cond.category}</span>
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="text-lg font-semibold text-slate-900">{cond.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">{cond.summary}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-700">
+                      Read guide
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <button onClick={() => onNavigate('/eye-conditions')} className="btn-secondary">
+                Browse All Conditions
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {hasTopics && (
+        <section className="section-padding bg-slate-50">
+          <div className="container-page">
+            <SectionHeader
+              eyebrow="Eye Topics"
+              title="Expert Insights & Tips"
+              description="Articles and clinic news to help you take better care of your vision."
+            />
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {data.topics.map((topic) => (
+                <button
+                  key={topic.slug}
+                  onClick={() => onNavigate(`/eye-topics/${topic.slug}`)}
+                  className="card-hover group flex flex-col overflow-hidden text-left"
+                >
+                  {topic.image_url && (
+                    <div className="relative h-40 overflow-hidden">
+                      <img src={topic.image_url} alt={topic.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      {topic.category && (
+                        <span className="absolute bottom-2 left-2 badge bg-white/90 text-slate-800">{topic.category}</span>
+                      )}
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="text-lg font-semibold text-slate-900">{topic.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">{topic.excerpt}</p>
+                    <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
+                      {topic.author && <span>By {topic.author}</span>}
+                      <span>{formatDate(topic.published_at)}</span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <button onClick={() => onNavigate('/eye-topics')} className="btn-secondary">
+                Read All Articles
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
 export default function Home({ onNavigate }: HomeProps) {
   return (
     <div>
@@ -199,8 +336,8 @@ export default function Home({ onNavigate }: HomeProps) {
                     desc: 'From high-definition OCT imaging to precision medical lasers, we invest in advanced equipment for accurate treatment.',
                   },
                   {
-                    title: 'Two Convenient Locations',
-                    desc: 'Serving Tun Aminah from Harimau Tarum to Tun Aminah, quality eye care is always close by.',
+                    title: 'Convenient Location',
+                    desc: 'Located in Taman Abad, Johor Bahru, quality eye care is always close by.',
                   },
                   {
                     title: 'Patient-First Approach',
@@ -278,6 +415,9 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
+      {/* Eye Conditions & Topics Previews */}
+      <HomePreviews onNavigate={onNavigate} />
+
       {/* Testimonials */}
       <section className="section-padding bg-white">
         <div className="container-page">
@@ -288,7 +428,7 @@ export default function Home({ onNavigate }: HomeProps) {
           />
           <div className="mt-10 flex justify-center">
             <a
-              href={locations[0].googleReviewsUrl}
+              href={activeLocations[0].googleReviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 transition-colors hover:bg-slate-100"
@@ -329,12 +469,12 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="section-padding bg-slate-50">
         <div className="container-page">
           <SectionHeader
-            eyebrow="Our Locations"
-            title="Two Clinics, One Standard of Excellence"
-            description="Visit us in Harimau Tarum or Tun Aminah for world-class eye care delivered with a personal touch."
+            eyebrow="Our Location"
+            title="Visit Us in Harimau Tarum"
+            description="Modern, welcoming, and equipped with the latest technology for world-class eye care delivered with a personal touch."
           />
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {locations.map((location) => (
+            {activeLocations.map((location) => (
               <div key={location.slug} className="card-hover overflow-hidden">
                 <div className="relative h-56 overflow-hidden">
                   <img

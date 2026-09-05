@@ -1,5 +1,5 @@
 import { Calendar, Phone, Clock } from 'lucide-react';
-import { clinic, locations } from '@/config/site';
+import { clinic, activeLocations } from '@/config/site';
 
 export default function Book() {
   return (
@@ -49,7 +49,7 @@ export default function Book() {
             </div>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {locations.map((loc) => (
+              {activeLocations.map((loc) => (
                 <div key={loc.slug} className="card p-5">
                   <h3 className="text-sm font-semibold text-slate-900">{loc.city}</h3>
                   <div className="mt-3 space-y-2">

@@ -12,6 +12,10 @@ import Locations from '@/pages/Locations';
 import LocationDetail from '@/pages/LocationDetail';
 import Book from '@/pages/Book';
 import Contact from '@/pages/Contact';
+import EyeConditions from '@/pages/EyeConditions';
+import EyeConditionDetail from '@/pages/EyeConditionDetail';
+import EyeTopics from '@/pages/EyeTopics';
+import EyeTopicDetail from '@/pages/EyeTopicDetail';
 
 function useHashRoute() {
   const [path, setPath] = useState(() => {
@@ -55,6 +59,16 @@ function App() {
     if (path.startsWith('/locations/')) {
       const slug = path.replace('/locations/', '');
       return <LocationDetail slug={slug} onNavigate={navigate} />;
+    }
+    if (path === '/eye-conditions') return <EyeConditions onNavigate={navigate} />;
+    if (path.startsWith('/eye-conditions/')) {
+      const slug = path.replace('/eye-conditions/', '');
+      return <EyeConditionDetail slug={slug} onNavigate={navigate} />;
+    }
+    if (path === '/eye-topics') return <EyeTopics onNavigate={navigate} />;
+    if (path.startsWith('/eye-topics/')) {
+      const slug = path.replace('/eye-topics/', '');
+      return <EyeTopicDetail slug={slug} onNavigate={navigate} />;
     }
     if (path === '/book') return <Book />;
     if (path === '/contact') return <Contact />;

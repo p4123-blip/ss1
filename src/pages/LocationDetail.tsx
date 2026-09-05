@@ -1,5 +1,5 @@
 import { MapPin, Phone, Mail, Clock, Calendar, ArrowLeft, Star, MessageCircle } from 'lucide-react';
-import { locations, doctors } from '@/config/site';
+import { activeLocations, doctors } from '@/config/site';
 
 interface LocationDetailProps {
   slug: string;
@@ -7,7 +7,7 @@ interface LocationDetailProps {
 }
 
 export default function LocationDetail({ slug, onNavigate }: LocationDetailProps) {
-  const location = locations.find((l) => l.slug === slug);
+  const location = activeLocations.find((l) => l.slug === slug);
 
   if (!location) {
     return (

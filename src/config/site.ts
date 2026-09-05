@@ -47,6 +47,7 @@ export interface Location {
   mapsUrl: string;
   image: string;
   googleReviewsUrl: string;
+  active: boolean;
 }
 
 export interface Testimonial {
@@ -74,7 +75,7 @@ export const clinic = {
   stats: [
     { value: '20+', label: 'Years of Excellence' },
     { value: '80,000+', label: 'Patients Served' },
-    { value: '2', label: 'Clinic Locations' },
+    { value: '1', label: 'Clinic Location' },
     { value: '4', label: 'Specialist Doctors' },
   ],
 };
@@ -314,6 +315,7 @@ export const locations: Location[] = [
     image:
       'https://images.pexels.com/photos/5493994/pexels-photo-5493994.jpeg?auto=compress&cs=tinysrgb&w=1200',
     googleReviewsUrl: 'https://www.google.com/maps/place/Shanthi+Eye+Klinik+%26+Surgery/@1.4854206,103.765508,17z/data=!4m8!3m7!1s0x31da6d2fbeec05b9:0x288d91a8e16e4e7f!8m2!3d1.4854206!4d103.765508!9m1!1b1!16s%2Fg%2F1xgz89sc?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D',
+    active: true,
   },
   {
     slug: 'johor-bahru',
@@ -335,8 +337,11 @@ export const locations: Location[] = [
     image:
       'https://images.pexels.com/photos/4596321/pexels-photo-4596321.jpeg?auto=compress&cs=tinysrgb&w=1200',
     googleReviewsUrl: 'https://www.google.com/maps/place/Shanthi+Eye+Klinik+%26+Surgery/@1.4854206,103.765508,17z/data=!4m8!3m7!1s0x31da6d2fbeec05b9:0x288d91a8e16e4e7f!8m2!3d1.4854206!4d103.765508!9m1!1b1!16s%2Fg%2F1xgz89sc?entry=ttu&g_ep=EgoyMDI2MDgzMC4wIKXMDSoASAFQAw%3D%3D',
+    active: false,
   },
 ];
+
+export const activeLocations = locations.filter((l) => l.active);
 
 export const testimonials: Testimonial[] = [
   {
@@ -392,6 +397,8 @@ export const testimonials: Testimonial[] = [
 export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
+  { label: 'Eye Conditions', path: '/eye-conditions' },
+  { label: 'Eye Topics', path: '/eye-topics' },
   { label: 'About', path: '/about' },
   { label: 'Doctors', path: '/doctors' },
   { label: 'Locations', path: '/locations' },

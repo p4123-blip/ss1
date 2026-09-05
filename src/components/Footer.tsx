@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Calendar } from 'lucide-react';
-import { clinic, locations, navLinks } from '@/config/site';
+import { clinic, activeLocations, navLinks } from '@/config/site';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -86,7 +86,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </ul>
           </div>
 
-          {locations.map((location) => (
+          {activeLocations.map((location) => (
             <div key={location.slug}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
                 {location.city}
