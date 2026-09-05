@@ -12,6 +12,7 @@ export interface EyeTopic {
   author: string | null;
   category: string | null;
   image_url: string | null;
+  published: boolean;
   published_at: string;
 }
 

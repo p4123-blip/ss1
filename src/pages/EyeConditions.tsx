@@ -14,6 +14,7 @@ export interface EyeCondition {
   when_to_seek_help: string[];
   image_url: string | null;
   sort_order: number;
+  published: boolean;
 }
 
 interface EyeConditionsProps {

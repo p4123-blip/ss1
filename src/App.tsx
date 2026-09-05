@@ -16,6 +16,7 @@ import EyeConditions from '@/pages/EyeConditions';
 import EyeConditionDetail from '@/pages/EyeConditionDetail';
 import EyeTopics from '@/pages/EyeTopics';
 import EyeTopicDetail from '@/pages/EyeTopicDetail';
+import Admin from '@/pages/Admin';
 
 function useHashRoute() {
   const [path, setPath] = useState(() => {
@@ -70,6 +71,7 @@ function App() {
       const slug = path.replace('/eye-topics/', '');
       return <EyeTopicDetail slug={slug} onNavigate={navigate} />;
     }
+    if (path === '/admin') return <Admin onNavigate={navigate} />;
     if (path === '/book') return <Book />;
     if (path === '/contact') return <Contact />;
 

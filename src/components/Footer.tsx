@@ -125,9 +125,17 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
-          <p className="text-sm text-slate-500">
-            &copy; {new Date().getFullYear()} {clinic.name}. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-sm text-slate-500">
+              &copy; {new Date().getFullYear()} {clinic.name}. All rights reserved.
+            </p>
+            <button
+              onClick={() => onNavigate('/admin')}
+              className="text-xs text-slate-600 transition-colors hover:text-slate-400"
+            >
+              Admin
+            </button>
+          </div>
           <button
             onClick={() => onNavigate('/book')}
             className="inline-flex items-center gap-2 text-sm font-medium text-primary-400 hover:text-primary-300"
